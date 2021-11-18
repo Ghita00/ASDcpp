@@ -39,25 +39,35 @@ pair<PNode, PNode> figli(PNode u) {
     return ret;
 }
 
-//visita anticipata in profondità
-void visitaProfondita(PNode u) {
+//visita in pre ordine
+void visitaPreordine(PNode u) {
     if (u != nullptr) {
         cout << u->key;
-        visitaProfondita(u->left);
-        visitaProfondita(u->right);
+        visitaPreordine(u->left);
+        visitaPreordine(u->right);
     }
 }
-//complessità theta(n)
+//complessita theta(n)
 
-//visità posticipata in ampiezza
-void visitaAmpiezza(PNode u) {
+//visita simmetrica
+void visitaSimmetrica(PNode u) {
     if (u != nullptr) {
-        visitaAmpiezza(u->left);
+        visitaSimmetrica(u->left);
         cout << u->key;
-        visitaAmpiezza(u->right);
+        visitaSimmetrica(u->right);
     }
 }
-//complessità theta(n)
+//complessita theta(n)
+
+//visita in post ordine
+void visitaPosticipata(PNode u) {
+    if (u != nullptr) {
+        visitaPosticipata(u->left);
+        visitaPosticipata(u->right);
+        cout << u->key;
+    }
+}
+//complessita theta(n)
 
 //stampa i nodi del livello k 
 void stampaLivello(PNode u, int k) {
@@ -69,5 +79,5 @@ void stampaLivello(PNode u, int k) {
         stampaLivello(u->right, k - 1);
     }
 }
-//complessità O(h)
+//complessita O(h)
 
