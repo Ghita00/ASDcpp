@@ -11,7 +11,7 @@ inizialmente
     - m = A.size()
     - q = (p + m)/2
 
-1) Divide: divide l'array in 2 sottoarray A[p...q] e A[q...m] 
+1) Divide: divide l'array in 2 sottoarray A[p...q] e A[q+1...m] 
 2) Impera(esegui): ordina i 2 sottoarray in modo ricorsivo utilizzando il Mergesort e se il problema 
 è sufficentemente piccolo(0 o 1 elemento) lo risolve direttamente
 3) Combina: fonde i 2 sottoarray ordinati e crea un array unico e ordinato
@@ -44,6 +44,8 @@ void merge(vector<int> A, int p, int q, int r){
     L.at(n1+1) = _MAX_INT_DIG;
     R.at(n2+1) = _MAX_INT_DIG;
 
+    i = 0;
+    j = 0;
     for(int k = p; k < r; k++){ //theta(r-p+1) ==> theta(A.size()) ==> theta(n)
         if(L.at(i) <= R.at(j)){
             A.at(k) = L.at(i);
@@ -56,10 +58,21 @@ void merge(vector<int> A, int p, int q, int r){
 }
 
 /*
+CORRETTEZZA
 la correttezza è determinata dall'invariante del ciclo 
+A[p...r-1] contiene i r-p elementi ordinati, elementi più piccoli di L[1...n1+1] e R[1...n2+1]
+L[i] e R[j] sono i più piccoli elementi dei loro sottoarray e NON COPIATI in A
+
+alla fine del cilco k = r+1
+inv[(r+1)/k] = sottoarray A[p...r-1] --> A[p...r-1+1] --> A[p...r]
+contiene i (r+1)-p elemeti più piccoli di L e R 
+
+L[i] e L[j] sono i più piccoli elementi dei loro sottoarray e NON COPIATI in A
+non copio i valori sentinella all'interno di A!
 */
 
 /*
+COMPLESSITA
 Complessità dell'algoritmo
 T(n) = theta(n1 + n2) + theta(n) = 
 = theta((q-p+1) + (r-q)) + theta(n) =

@@ -25,11 +25,18 @@ void InsertionSort(vector<int> A){
     }
 }
 /*
+CORRETTEZA
 La correttezza è determinata dall'invariante del ciclo 
-
+elementi di A[1,...,j-1] --> elementi ordinati
+    - vero dal primo ciclo for --> j=2 e A[1] ordinato 
+    - vero prima di ogni iterazione
+    - vero dopo la conclusione del for --> j = A.size() + 1 è vero
+        A[1,...,j-1] è ordinato
+        A[1,...,A.size()+1-1] è ordinato
 */
 
 /*
+COMPLESSITA
 Complessità secondo un teorema
 l'algoritmo insertion sort ordina in loco n elementi eseguendo nel caso peggiore theta(n^2) confronti
 
@@ -42,6 +49,7 @@ sommatoria da j=2 fino a n di j-1 =
 = sommatoria da J=1 fino a n-1 di k = [(n-1)(n-1+1)]/2 = [(n-1)n]/2 = theta(n^2)
 n = A.size()
 
-caso migliore = array già ordinato in senso non decrescente --> theta(n)
-caso peggiore = array già ordinato in senso opposto --> theta(n^2)
+Caso migliore = array già ordinato in senso non decrescente --> theta(n) ==> SENSIBILE ALL'ORDINAMENTO DELL'INPUT
+Caso peggiore = array già ordinato in senso opposto --> theta(n^2)
+
 */
