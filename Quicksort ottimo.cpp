@@ -14,7 +14,24 @@ VANTAGGI
 + 3/4 volte più veloce del mergesort
 */
 
-//todo mettere funzione partition
+int partition(vector<int> A, int p, int r){
+    int x = A[r];
+    int i = p-1;
+    int j;
+    for(j = p; j<r-1; j++){ //esecuzione ciclo [r-1-p+1] --> theta(n) dove n = r-p+1 
+        if(A.at(j) < x){
+            i++;
+            int aux = A.at(i);
+            A.at(i) = A.at(j);
+            A.at(j) = aux;
+        }
+    }
+    int aux = A.at(i+1);
+    A.at(i+1) = A.at(r);
+    A.at(r) = aux;
+
+    return i+1;
+}
 
 int randomazed_partion(vector<int> A, int p, int r){
     //speudo codice genero i random da [p, r]
